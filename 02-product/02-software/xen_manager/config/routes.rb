@@ -13,6 +13,5 @@ Rails.application.routes.draw do
   post   "/login",  to: "sessions#create"
   delete "/logout", to: "sessions#destroy", as: :logout
 
-  # Placeholder root — will be replaced by the domUs listing item
-  root "home#index"
+  root "domus#index"
 end
