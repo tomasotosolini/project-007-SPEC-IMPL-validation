@@ -1,0 +1,9 @@
+admin_user:
+  username: root
+  password_digest: <%= BCrypt::Password.create("root") %>
+  role: admin
+
+guest_user:
+  username: guest
+  password_digest: <%= BCrypt::Password.create("guestpass") %>
+  role: guest
