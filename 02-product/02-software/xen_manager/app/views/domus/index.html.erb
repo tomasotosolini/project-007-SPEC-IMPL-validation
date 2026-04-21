@@ -1,0 +1,72 @@
+<% content_for :title, "DomUs — Xen Manager" %>
+
+<div style="display:flex; justify-content:space-between; align-items:center;">
+  <h1>DomUs</h1>
+  <span>
+    Logged in as <strong><%= current_user.username %></strong> (<%= current_user.role %>)
+    &nbsp;
+    <%= button_to "Logout", logout_path, method: :delete %>
+  </span>
+</div>
+
+<h2>Running</h2>
+<% if @running_domus.empty? %>
+  <p>No running domUs.</p>
+<% else %>
+  <table border="1" cellpadding="4" cellspacing="0">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>vCPUs</th>
+        <th>Memory (MB)</th>
+        <th>Disk (GB)</th>
+        <th>NIC</th>
+        <th>CPU %</th>
+        <th>Mem Used (MB)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @running_domus.each do |entry| %>
+        <tr>
+          <td><%= entry[:domu].name %></td>
+          <td><%= entry[:domu].vcpus %></td>
+          <td><%= entry[:domu].memory_mb %></td>
+          <td><%= entry[:domu].disk_gb %></td>
+          <td><%= entry[:domu].nic_type || "none" %></td>
+          <td><%= entry[:cpu_percent] %></td>
+          <td><%= entry[:memory_used_mb] %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<h2>Configured</h2>
+<% if @configured_domus.empty? %>
+  <p>No configured domUs.</p>
+<% else %>
+  <table border="1" cellpadding="4" cellspacing="0">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>vCPUs</th>
+        <th>Memory (MB)</th>
+        <th>Disk (GB)</th>
+        <th>NIC</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @configured_domus.each do |domu| %>
+        <tr>
+          <td><%= domu.name %></td>
+          <td><%= domu.vcpus %></td>
+          <td><%= domu.memory_mb %></td>
+          <td><%= domu.disk_gb %></td>
+          <td><%= domu.nic_type || "none" %></td>
+          <td><%= domu.status %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

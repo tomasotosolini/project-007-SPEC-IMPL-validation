@@ -7,3 +7,8 @@ guest_user:
   username: guest
   password_digest: <%= BCrypt::Password.create("guestpass") %>
   role: guest
+
+normal_user:
+  username: normal
+  password_digest: <%= BCrypt::Password.create("normalpass") %>
+  role: user
