@@ -78,7 +78,7 @@ If any category is absent from the spec, Claude raises it as a question.
 The User must address, declare not applicable, or explicitly postpone
 each one before implementation proceeds.
 
-NFRs must have a (non empty set of) classification tags, chosen by the User. The goal of this is to prevent Claude from always taking into account **all** the NFRs, when doing the relevance check when NFR is postponed and reanalyzed later.
+Addressed and Postponed NFRs must have a (non empty set of) classification tags, chosen by the User. The goal of this is to prevent Claude from always taking into account **all** the NFRs, when doing the relevance check when NFR is postponed and reanalyzed later. Not applicable ones do not need tags as they are not going to be applied. If Not applicable is applied, Claude raises an error.
 
 
 ### Domains
